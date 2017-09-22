@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+ext.auto_value_version = "1.2"
+ext.auto_value_gson_version = "0.5.0"
+ext.async_http_version = "1.4.9"
+ext.gson_version = "2.8.1"
+ext.butterknife_version = "8.5.1"
+ext.support_version = "25.3.1"
+ext.dagger_version = "2.11"
+ext.rx_java_version = "2.0.2"
+ext.rx_java2_version = "1.0.0"
+ext.rx_android_version = "2.0.1"
+ext.retrofit_version = "2.3.0"
+ext.gson_version = "2.8.1"
+ext.converter_gson_version = "2.1.0"
+ext.apache_commons_version = "2.5"
+ext.transformations_version = "2.1.2"
+ext.gpuimage_version = "1.4.1"
+ext.picasso_version = "2.5.2"
+ext.javax_version = "1.0"
+ext.parcel_version = "1.1.6"
+ext.auto_parcel_version = "1.0.3"
+ext.junit_version = "4.12"
+ext.icepick_version = "3.2.0"
+ext.espresso_version = "2.2.2"
+ext.glide_version = "3.8.0"
+ext.glide_transformations_version = "2.0.2"
+ext.gpuimage_version = "1.4.1"
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+}

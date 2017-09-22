@@ -1,0 +1,114 @@
+apply plugin: "com.android.application"
+apply plugin: "me.tatarka.retrolambda"
+apply plugin: "android-apt"
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.codepath.android.booksearch"
+        minSdkVersion 23
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+    lintOptions {
+        abortOnError false
+    }
+    packagingOptions {
+        exclude "META-INF/rxjava.properties"
+        exclude "META-INF/DEPENDENCIES.txt"
+        exclude "META-INF/LICENSE.txt"
+        exclude "META-INF/NOTICE.txt"
+        exclude "META-INF/NOTICE"
+        exclude "META-INF/LICENSE"
+        exclude "META-INF/DEPENDENCIES"
+        exclude "META-INF/notice.txt"
+        exclude "META-INF/license.txt"
+        exclude "META-INF/dependencies.txt"
+        exclude "META-INF/LGPL2.1"
+    }
+}
+
+
+
+repositories {
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://maven.fabric.io/public" }
+    maven { url "https://jitpack.io" }
+    maven { url "https://clojars.org/repo/" }
+}
+
+dependencies {
+    compile fileTree(include: ["*.jar"], dir: "libs")
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version", {
+        exclude group: "com.android.support", module: "support-annotations"
+    })
+
+    testCompile "junit:junit:$junit_version"
+
+    //Support
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:recyclerview-v7:$support_version"
+    compile "com.loopj.android:android-async-http:$async_http_version"
+    compile "com.android.support:design:$support_version"
+    compile "com.android.support:support-v4:$support_version"
+    compile "com.android.support:cardview-v7:$support_version"
+
+    //Parceler
+    compile "org.parceler:parceler-api:$parcel_version"
+    apt "org.parceler:parceler:$parcel_version"
+
+    //RxAndroid
+    compile "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:$rx_java2_version"
+
+    //Retrofit
+    compile "com.squareup.retrofit2:converter-gson:$converter_gson_version"
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    //Dagger 2
+    compile "com.google.dagger:dagger:$dagger_version"
+    apt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //Gson
+    compile group: "com.google.code.gson", name: "gson", version: "$gson_version"
+
+    //ButterKnife
+    compile "com.jakewharton:butterknife:$butterknife_version"
+    apt "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+    //Icepick
+    compile "frankiesardo:icepick:$icepick_version"
+    provided "frankiesardo:icepick-processor:$icepick_version"
+    apt "frankiesardo:icepick-processor:$icepick_version"
+
+    //AutoParcel
+    compile "com.google.auto.value:auto-value:$auto_value_version"
+    apt "com.google.auto.value:auto-value:$auto_value_version"
+    apt "frankiesardo:auto-parcel:$auto_parcel_version"
+
+    //Glide
+    compile "com.github.bumptech.glide:glide:$glide_version"
+    compile "jp.wasabeef:glide-transformations:$glide_transformations_version"
+    compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:$gpuimage_version"
+
+}
+
+
