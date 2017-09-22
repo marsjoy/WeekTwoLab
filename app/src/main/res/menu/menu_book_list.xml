@@ -7,8 +7,10 @@
         android:title="@string/name_search_view"
         android:icon="@drawable/ic_search"
         app:showAsAction="ifRoom|collapseActionView"
-        android:textColorHint="@android:color/white"
+        android:textColorHint="@color/sky_80"
         android:hint="@string/search_hint"
+        app:queryHint="@string/search_hint"
+        app:defaultQueryHint="@string/search_hint"
         app:actionViewClass="android.support.v7.widget.SearchView" />
 
     <item

@@ -76,8 +76,7 @@ public class BookDetailActivity extends AppCompatActivity {
                     public boolean onResourceReady(GlideDrawable resource, Uri model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
                         prepareShareIntent(
                                 ((GlideBitmapDrawable) resource).getBitmap(),
-                                book.getTitle(),
-                                book.getAuthor());
+                                book);
                         attachShareIntentAction();
                         return false;
                     }
@@ -91,17 +90,18 @@ public class BookDetailActivity extends AppCompatActivity {
     }
 
     // Gets the image URI and setup the associated share intent to hook into the provider
-    public void prepareShareIntent(Bitmap drawableImage, String title, String author) {
+    public void prepareShareIntent(Bitmap drawableImage, Book book) {
         // Fetch Bitmap Uri locally
-        Uri bmpUri = getLocalBitmapUriFromDrawable(drawableImage);// see previous remote images section and notes for API > 23
+        Uri bmpUri = getLocalBitmapUriFromDrawable(drawableImage);
+        String share_message = getString(R.string.book_share_message, book.getTitle(), book.getAuthor());
 
         // Construct share intent as described above based on bitmap
         shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri);
-        shareIntent.setType("image/*");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, title);
-        shareIntent.putExtra(Intent.EXTRA_TEXT, author);
+        shareIntent
+                .setAction(Intent.ACTION_SEND)
+                .putExtra(Intent.EXTRA_TEXT, share_message)
+                .putExtra(Intent.EXTRA_STREAM, bmpUri)
+                .setType("image/*");
     }
 
     // Attaches the share intent to the share menu item provider
@@ -137,8 +137,6 @@ public class BookDetailActivity extends AppCompatActivity {
 
         // fetch the reference to the action provider
         miShareAction = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
-        attachShareIntentAction();
-
         return true;
     }
 
@@ -150,7 +148,7 @@ public class BookDetailActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         // Launch share menu
-        startActivity(Intent.createChooser(shareIntent, "Share Image"));
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

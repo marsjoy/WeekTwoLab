@@ -23,6 +23,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:contentDescription="@string/book_cover"
                 android:id="@+id/ivBookCover"
                 android:layout_marginTop="8dp"
                 android:layout_width="280dp"

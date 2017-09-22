@@ -3,11 +3,12 @@
     <string name="app_name">Book Search</string>
     <string name="title_activity_book_detail">Book Details</string>
     <string name="name_search_view">Search</string>
-    <string name="search_hint">Search books and authors</string>
+    <string name="search_hint">Search books</string>
+    <string name="sample_query">In Search of Lost Time</string>
     <string name="author">By %s</string>
     <string name="published">Published</string>
-    <string name="toolbar">Toolbar</string>
     <string name="share">Share this book</string>
+    <string name="book_share_message" formatted="false">Check out %s by %s; it\'s a great read!</string>
     <string name="loading">Loading&#8230;</string>
-    <string name="sample_query">In Search of Lost Time</string>
+    <string name="book_cover">Book Cover</string>
 </resources>
